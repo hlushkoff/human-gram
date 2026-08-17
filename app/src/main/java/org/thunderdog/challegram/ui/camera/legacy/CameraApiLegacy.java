@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -784,6 +784,16 @@ public class CameraApiLegacy extends CameraApi implements Camera.PreviewCallback
 
     if (videoFile != null) {
       if (saveFile && videoFile.exists()) {
+        // [Solana Video Signature Hook]
+        // Trigger Transaction 1 (Original Camera File, Legacy API)
+        try {
+            org.thunderdog.challegram.solana.SolanaVideoHook.onRecordEnd(
+                org.thunderdog.challegram.tool.UI.getAppContext(),
+                videoFile.getAbsolutePath()
+            );
+        } catch (Exception e) {
+            org.thunderdog.challegram.Log.e("SolanaVideoHook", "Error during onRecordEnd hook Legacy", e);
+        }
         U.toGalleryFile(videoFile, true, callback);
       }
 

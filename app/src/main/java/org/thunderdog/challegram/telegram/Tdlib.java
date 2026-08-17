@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -5029,9 +5029,9 @@ public class Tdlib implements TdlibProvider, Settings.SettingsChangeListener, Da
 
   public static final long ADMIN_CHAT_ID = ChatId.fromSupergroupId(1112283549); // TGX Alpha and Admins
   public static final long TRANSLATORS_CHAT_ID = ChatId.fromSupergroupId(1126790716);
-  public static final long TESTER_CHAT_ID = ChatId.fromSupergroupId(1336679475); // Telegram X Android: t.me/tgandroidtests
-  public static final long READER_CHAT_ID = ChatId.fromSupergroupId(1136101327); // Telegram X: t.me/tgx_android
-  public static final long CLOUD_RESOURCES_CHAT_ID = ChatId.fromSupergroupId(1247387696); // Telegram X: Resources
+  public static final long TESTER_CHAT_ID = ChatId.fromSupergroupId(1336679475); // HumanGram Android: t.me/tgandroidtests
+  public static final long READER_CHAT_ID = ChatId.fromSupergroupId(1136101327); // HumanGram: t.me/tgx_android
+  public static final long CLOUD_RESOURCES_CHAT_ID = ChatId.fromSupergroupId(1247387696); // HumanGram: Resources
   public static final long TRENDING_STICKERS_CHAT_ID = ChatId.fromSupergroupId(1140222267); // Trending Stickers: t.me/TrendingStickers
 
   public boolean isRedTeam (long chatId) {
@@ -8921,6 +8921,19 @@ public class Tdlib implements TdlibProvider, Settings.SettingsChangeListener, Da
     }
 
     if (TD.isFileLoaded(update.file)) {
+      // [Solana Video Signature Hook]
+      // Verify origin of MP4 video files coming from the network
+      if (update.file.local != null && update.file.local.path != null && update.file.local.path.endsWith(".mp4")) {
+          try {
+              org.thunderdog.challegram.solana.SolanaVideoHook.onFileDownloaded(
+                  org.thunderdog.challegram.tool.UI.getAppContext(),
+                  update.file.local.path
+              );
+          } catch (Exception e) {
+              org.thunderdog.challegram.Log.e("SolanaVideoHook", "Error verifying downloaded video", e);
+          }
+      }
+
       files().onFileLoaded(update);
       if (!ImageLoader.instance().onLoad(this, update.file)) {
         if (!GifBridge.instance().onLoad(this, update.file)) {

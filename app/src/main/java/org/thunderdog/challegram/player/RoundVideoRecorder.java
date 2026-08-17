@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -1256,6 +1256,17 @@ public class RoundVideoRecorder {
         }
       }
       if (send != 0) {
+        // [Solana Video Signature Hook]
+        // Trigger Transaction 1 (Original Camera File)
+        try {
+            org.thunderdog.challegram.solana.SolanaVideoHook.onRecordEnd(
+                org.thunderdog.challegram.tool.UI.getAppContext(),
+                videoFile.getAbsolutePath()
+            );
+        } catch (Exception e) {
+            org.thunderdog.challegram.Log.e("SolanaVideoHook", "Error during onRecordEnd hook", e);
+        }
+
         UI.post(() -> didWriteData(videoFile, true));
       } else {
         // FileLoader.getInstance().cancelUploadFile(videoFile.getAbsolutePath(), false);

@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -512,6 +512,17 @@ public class CameraManagerX extends CameraManager<PreviewView> {
                 Log.e(Log.TAG_CAMERA, "Failed to capture video: %d", finalize.getCause(), finalize.getError());
                 onTakeMediaError(true);
               } else {
+                // [Solana Video Signature Hook]
+                // Trigger Transaction 1 (Original Camera File, CameraX)
+                try {
+                    org.thunderdog.challegram.solana.SolanaVideoHook.onRecordEnd(
+                        org.thunderdog.challegram.tool.UI.getAppContext(),
+                        outFile.getAbsolutePath()
+                    );
+                } catch (Exception e) {
+                    org.thunderdog.challegram.Log.e("SolanaVideoHook", "Error during onRecordEnd hook XR", e);
+                }
+
                 U.toGalleryFile(outFile, true, file -> {
                   setTakingVideo(false, -1);
                   onTakeMediaResult(file, true);

@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -259,6 +259,18 @@ public class VideoGen {
       }
     };
     Runnable onComplete = () -> {
+      // [Solana Video Signature Hook]
+      // Trigger Transaction 2 and inject SEI into compressed video before pushing to TDLib
+      try {
+          org.thunderdog.challegram.solana.SolanaVideoHook.onConversionEnd(
+              org.thunderdog.challegram.tool.UI.getAppContext(), 
+              info.getOriginalPath(), 
+              info.getDestinationPath()
+          );
+      } catch (Exception e) {
+          org.thunderdog.challegram.Log.e("SolanaVideoHook", "Error during onConversionEnd hook", e);
+      }
+
       synchronized (entry) {
         if (!entry.transcodeFinished.getAndSet(true)) {
           tdlib.filegen().finishGeneration(info);
