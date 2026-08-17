@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
