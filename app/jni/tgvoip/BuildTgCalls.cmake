@@ -2,7 +2,7 @@
 
 set(TGCALLS_DIR "${TGCALLS_DEPS_DIR}/tgcalls")
 
-# Commit Telegram X currently relies on:
+# Commit HumanGram currently relies on:
 # https://github.com/TelegramMessenger/tgcalls/tree/2faee3b5524f54d56c91c2058c00e11c656a74b3
 
 # Source files list:

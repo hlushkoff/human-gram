@@ -53,23 +53,9 @@ target_include_directories(rlottie PUBLIC
   "${RLOTTIE_DIR}/src/vector/stb")
 
 if (${ANDROID_ABI} STREQUAL "armeabi-v7a")
-  target_compile_options(rlottie PUBLIC
-    -fno-integrated-as
-  )
   target_compile_definitions(rlottie PRIVATE
     USE_ARM_NEON
   )
-  target_sources(rlottie PRIVATE
-    "${RLOTTIE_DIR}/src/vector/pixman/pixman-arm-neon-asm.S")
 elseif(${ANDROID_ABI} STREQUAL "arm64-v8a")
-  target_compile_options(rlottie PUBLIC
-    -fno-integrated-as
-  )
-  target_compile_definitions(rlottie PRIVATE
-    USE_ARM_NEON
-    __ARM64_NEON__
-  )
-  target_sources(rlottie PRIVATE
-    "${RLOTTIE_DIR}/src/vector/pixman/pixman-arma64-neon-asm.S"
-  )
+  # Use C fallback instead of NEON asm (64-bit pixman asm uses old GNU syntax incompatible with NDK 27 IAS)
 endif()

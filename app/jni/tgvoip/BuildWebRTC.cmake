@@ -3,7 +3,7 @@
 set(WEBRTC_DIR "${TGCALLS_DEPS_DIR}/webrtc")
 set(WEBRTC_BASE_DIR "${TGCALLS_DEPS_DIR}/webrtc_deps/base")
 
-# Commit Telegram X currently relies on:
+# Commit HumanGram currently relies on:
 # https://github.com/ali-fareed/webrtc/tree/e3dfe44d1aea15a1aabded19d71884412e772245
 # Origin:
 # https://github.com/TelegramMessenger/Telegram-iOS/tree/ae3ee3d063df2dcde868a50aa6a6bbc8cfd8c63f/third-party/webrtc
