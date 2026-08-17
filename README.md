@@ -1,17 +1,21 @@
-# [Telegram X](https://play.google.com/store/apps/details?id=org.thunderdog.challegram) — a slick experimental Telegram client based on [TDLib](https://core.telegram.org/tdlib).
+> **HumanGram** is a fork of [HumanGram](https://github.com/TGX-Android/Telegram-X) by [TGX-Android](https://github.com/TGX-Android).
+> Licensed under [GNU GPL v3](LICENSE). Original copyright © 2014 tgx-android@pm.me. This fork renames the application to HumanGram and changes the application ID.
+> Modified: 2026-08-06
 
-![Telegram X](/images/feature.png)
+# [HumanGram](https://play.google.com/store/apps/details?id=org.thunderdog.challegram) — a slick experimental Telegram client based on [TDLib](https://core.telegram.org/tdlib).
+
+![HumanGram](/images/feature.png)
 
 This is the complete source code and the build instructions for the official alternative Android client for the Telegram messenger, based on the [Telegram API](https://core.telegram.org/api) and the [MTProto](https://core.telegram.org/mtproto) secure protocol via [TDLib](https://github.com/TGX-Android/tdlib).
 
-* [**Telegram X** on Google Play](http://play.google.com/store/apps/details?id=org.thunderdog.challegram) ([subscribe to beta](https://play.google.com/apps/testing/org.thunderdog.challegram))
+* [**HumanGram** on Google Play](http://play.google.com/store/apps/details?id=org.thunderdog.challegram) ([subscribe to beta](https://play.google.com/apps/testing/org.thunderdog.challegram))
 * [APKs and Build Info](https://t.me/tgx_log)
 * [Bot to verify APK hash](https://t.me/tgx_bot)
 
 <details>
 <summary>Other sources</summary>
 
-* [**Telegram X** on Huawei AppGallery](https://appgallery.huawei.com/app/C101754199)
+* [**HumanGram** on Huawei AppGallery](https://appgallery.huawei.com/app/C101754199)
 * [**GitHub Releases**](https://github.com/TGX-Android/Telegram-X/releases)
 
 </details>
@@ -36,16 +40,16 @@ This is the complete source code and the build instructions for the official alt
 
 #### Windows
 
-* **Telegram X** does not provide official build instructions for Windows platform. It is recommended to rely on Linux distributions instead.
+* **HumanGram** does not provide official build instructions for Windows platform. It is recommended to rely on Linux distributions instead.
 
 ### Building
 
-1. `$ git clone --recursive --depth=1 --shallow-submodules https://github.com/TGX-Android/Telegram-X tgx` — clone **Telegram X** with submodules
+1. `$ git clone --recursive --depth=1 --shallow-submodules https://github.com/TGX-Android/Telegram-X tgx` — clone **HumanGram** with submodules
 2. In case you forgot the `--recursive` flag, `cd` into `tgx` directory and: `$ git submodule init && git submodule update --init --recursive --depth=1`
 3. Create `keystore.properties` file outside of source tree with the following properties:<br/>`keystore.file`: absolute path to the keystore file<br/>`keystore.password`: password for the keystore<br/>`key.alias`: key alias that will be used to sign the app<br/>`key.password`: key password.<br/>**Warning**: keep this file safe and make sure nobody, except you, has access to it. For production builds one could use a separate user with home folder encryption to avoid harm from physical theft
 4. `$ cd tgx`
 5. Run `$ scripts/./setup.sh` and follow up the instructions
-6. If you specified package name that's different from the one Telegram X uses, [setup Firebase](https://firebase.google.com/docs/android/setup) and replace `google-services.json` with the one that's suitable for the `app.id` you need
+6. If you specified package name that's different from the one HumanGram uses, [setup Firebase](https://firebase.google.com/docs/android/setup) and replace `google-services.json` with the one that's suitable for the `app.id` you need
 7. Now you can open the project using **[Android Studio](https://developer.android.com/studio/)** or build manually from the command line: `./gradlew assembleUniversalRelease`.
 
 #### Available flavors
@@ -103,7 +107,7 @@ In future build reproduction might become easier. Here's a list of related PR-we
 
 ## Verifying side-loaded APKs
 
-If you downloaded **Telegram X** APK from somewhere and would like to simply verify whether it's an original APK without any injected malicious source code, you need to get checksum (`SHA-256`, `SHA-1` or `MD5`) of the downloaded APK file and find whether it corresponds to any known **Telegram X** version.
+If you downloaded **HumanGram** APK from somewhere and would like to simply verify whether it's an original APK without any injected malicious source code, you need to get checksum (`SHA-256`, `SHA-1` or `MD5`) of the downloaded APK file and find whether it corresponds to any known **HumanGram** version.
 
 In order to obtain **SHA-256** of the APK:
 
@@ -118,7 +122,7 @@ Once obtained, there are three ways to find out the commit for the specific chec
 
 ## License
 
-`Telegram X` is licensed under the terms of the GNU General Public License v3.0.
+`HumanGram` is licensed under the terms of the GNU General Public License v3.0.
 
 For more information, see [LICENSE](/LICENSE) file.
 
@@ -126,10 +130,10 @@ License of components and third-party dependencies it relies on might differ, ch
 
 ### Third-party dependencies
 
-List of third-party components used in **Telegram X** can be found [here](/docs/THIRDPARTY.md). Additionally you can check the specific commit of the third-party component used, for example, [here](/app/jni/thirdparty) and [here](/thirdparty).
+List of third-party components used in **HumanGram** can be found [here](/docs/THIRDPARTY.md). Additionally you can check the specific commit of the third-party component used, for example, [here](/app/jni/thirdparty) and [here](/thirdparty).
 
 ## Contributions
 
-**Telegram X** welcomes contributions. Check out [pull request template](/docs/PULL_REQUEST_TEMPLATE.md) and [guide for contributors](/docs/GUIDE.md) to learn more about Telegram X internals before creating the first pull request.
+**HumanGram** welcomes contributions. Check out [pull request template](/docs/PULL_REQUEST_TEMPLATE.md) and [guide for contributors](/docs/GUIDE.md) to learn more about HumanGram internals before creating the first pull request.
 
-If you are a regular user and experience a problem with Telegram X, the best place to look for solution is [Telegram X chat](https://t.me/tgandroidtests) — a community with over 4 thousand members. Please do not use this repository to ask questions: if you have general issue with Telegram, refer to [FAQ](http://telegram.org/faq) or contact [Telegram Support](https://telegram.org/faq#telegram-support).
+If you are a regular user and experience a problem with HumanGram, the best place to look for solution is [HumanGram chat](https://t.me/tgandroidtests) — a community with over 4 thousand members. Please do not use this repository to ask questions: if you have general issue with Telegram, refer to [FAQ](http://telegram.org/faq) or contact [Telegram Support](https://telegram.org/faq#telegram-support).

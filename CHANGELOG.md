@@ -1,8 +1,8 @@
-# [Telegram X](https://play.google.com/store/apps/details?id=org.thunderdog.challegram): Change Logs 
+# [HumanGram](https://play.google.com/store/apps/details?id=org.thunderdog.challegram): Change Logs 
 
-![Telegram X](/images/feature.png)
+![HumanGram](/images/feature.png)
 
-This file is a collection of full blog posts about major [**Telegram X** for Android](http://play.google.com/store/apps/details?id=org.thunderdog.challegram) updates. Note not all major updates had one, as some of them were limited to the change log on Google Play platform. 
+This file is a collection of full blog posts about major [**HumanGram** for Android](http://play.google.com/store/apps/details?id=org.thunderdog.challegram) updates. Note not all major updates had one, as some of them were limited to the change log on Google Play platform. 
 
 If you want to see the exact changes between two versions, refer to `Changes in Source Code` in app settings, [**Releases**](https://github.com/TGX-Android/Telegram-X/releases) section of this repository, or directly by checking the commits list (the exact commit used in specific version can be found in app settings and [@tgx_log](https://t.me/tgx_log)).
    
@@ -49,4 +49,4 @@ https://t.me/tgx_bot — verify APK checksum for authenticity against modificati
 
 ### Source Code
 
-https://github.com/TGX-Android/Telegram-X — main repository of Telegram X
+https://github.com/TGX-Android/Telegram-X — main repository of HumanGram
