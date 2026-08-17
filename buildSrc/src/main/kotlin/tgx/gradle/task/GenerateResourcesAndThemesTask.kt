@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -364,7 +364,7 @@ open class GenerateResourcesAndThemesTask : BaseTask() {
     writeToFile("app/src/main/java/org/thunderdog/challegram/theme/ThemeId.java") { java ->
       java.append("""
         /*
-         * This file is a part of Telegram X
+         * This file is a part of HumanGram
          * Copyright © 2014 (tgx-android@pm.me)
          *
          * This program is free software: you can redistribute it and/or modify
@@ -413,7 +413,7 @@ open class GenerateResourcesAndThemesTask : BaseTask() {
     writeToFile("app/src/main/java/org/thunderdog/challegram/theme/PropertyId.java") { java ->
       java.append("""
         /*
-         * This file is a part of Telegram X
+         * This file is a part of HumanGram
          * Copyright © 2014 (tgx-android@pm.me)
          *
          * This program is free software: you can redistribute it and/or modify
@@ -462,7 +462,7 @@ open class GenerateResourcesAndThemesTask : BaseTask() {
     writeToFile("app/src/main/java/org/thunderdog/challegram/theme/ColorId.java") { java ->
       java.append("""
         /*
-         * This file is a part of Telegram X
+         * This file is a part of HumanGram
          * Copyright © 2014 (tgx-android@pm.me)
          *
          * This program is free software: you can redistribute it and/or modify
@@ -511,7 +511,7 @@ open class GenerateResourcesAndThemesTask : BaseTask() {
     writeToFile("app/src/main/java/org/thunderdog/challegram/theme/ColorIdTinted.java") { java ->
       java.append("""
         /*
-         * This file is a part of Telegram X
+         * This file is a part of HumanGram
          * Copyright © 2014 (tgx-android@pm.me)
          *
          * This program is free software: you can redistribute it and/or modify
@@ -551,7 +551,7 @@ open class GenerateResourcesAndThemesTask : BaseTask() {
     writeToFile("app/src/main/java/org/thunderdog/challegram/theme/PorterDuffColorId.java") { java ->
       java.append("""
         /*
-         * This file is a part of Telegram X
+         * This file is a part of HumanGram
          * Copyright © 2014 (tgx-android@pm.me)
          *
          * This program is free software: you can redistribute it and/or modify

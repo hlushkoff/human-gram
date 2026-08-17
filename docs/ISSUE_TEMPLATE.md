@@ -1,4 +1,4 @@
-The guide below provides the flow for creating a perfect issue report to the Telegram X Repository. Before submitting, ensure that it complies with the following principles. 
+The guide below provides the flow for creating a perfect issue report to the HumanGram Repository. Before submitting, ensure that it complies with the following principles. 
 
 ## Your report must be:
 - [ ] **Appropriate**. Only *bugs* can be included.
@@ -11,7 +11,7 @@ The guide below provides the flow for creating a perfect issue report to the Tel
 - [ ] **English** is the only language accepted.  
 
 ## Your issue must not be a:
-- [ ] **Feature Request**. Designers are welcome to propose properly crafted feature requests via [Telegram Designers](https://t.me/designers) or share ideas in [Telegram X Developers](https://t.me/tgx_dev), given they include *finalized* mockups and match the overall app quality.
+- [ ] **Feature Request**. Designers are welcome to propose properly crafted feature requests via [Telegram Designers](https://t.me/designers) or share ideas in [HumanGram Developers](https://t.me/tgx_dev), given they include *finalized* mockups and match the overall app quality.
 - [ ] **UX Preference**. We won't consider those as issues. If you are a developer and believe some change would improve user experience on all devices, consider submitting a [pull request](https://github.com/TGX-Android/Telegram-X/blob/main/docs/PULL_REQUEST_TEMPLATE.md).
 
 *All these mentioned above will be declined.*

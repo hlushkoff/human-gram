@@ -1,4 +1,4 @@
-# Telegram X: Comprehensive guide for fellow contributors
+# HumanGram: Comprehensive guide for fellow contributors
 
 This guide is intended for future contributors and potential maintainers. It includes both common and technical information about the project. It's **important** to read this document before starting working with the project to understand how everything works in the app.
 
@@ -8,11 +8,11 @@ Refer to [README](/README.md) for the project setup and build instructions.
 
 ## 2: Translations
 
-Whenever you'd like to translate **Telegram X** to a new language, or improve some existing string, you should refer to the cloud [Translations Platform](https://translations.telegram.org/en/android_x/). All changes there affect **Telegram X** without need in updates, and, in most cases, even without need in the app restart.
+Whenever you'd like to translate **HumanGram** to a new language, or improve some existing string, you should refer to the cloud [Translations Platform](https://translations.telegram.org/en/android_x/). All changes there affect **HumanGram** without need in updates, and, in most cases, even without need in the app restart.
 
-**Telegram X** has only English language embedded (`strings.xml`). `strings.xml` files in locale-specific folders contain only strings that are somewhat important to be available before the very first connection with Telegram servers could be established after the clean app installation.
+**HumanGram** has only English language embedded (`strings.xml`). `strings.xml` files in locale-specific folders contain only strings that are somewhat important to be available before the very first connection with Telegram servers could be established after the clean app installation.
 
-**Telegram X** also has translation tools available inside the app: you can create, install, or edit existing localizations from `.xml` files. These tools might be useful when creating a new translation and checking how it looks before the language would be available on the [Translations Platform](https://translations.telegram.org/en/android_x/).
+**HumanGram** also has translation tools available inside the app: you can create, install, or edit existing localizations from `.xml` files. These tools might be useful when creating a new translation and checking how it looks before the language would be available on the [Translations Platform](https://translations.telegram.org/en/android_x/).
 
 ### 2.1: Adding ordinary strings
 
@@ -66,7 +66,7 @@ These suffixes are always used:
 
 1. Define **8** or **10** strings in `strings.xml` with the suffixes described above
 2. Build project to refresh auto-generated strings resources
-3. Call `Lang.getRelativeDate` with the string **without** suffix. `approximate` argument must correspond to the chosen form, otherwise **Telegram X** will crash when undefined form is used.
+3. Call `Lang.getRelativeDate` with the string **without** suffix. `approximate` argument must correspond to the chosen form, otherwise **HumanGram** will crash when undefined form is used.
 
 #### Calculating time remaining until the date refresh
 
@@ -102,7 +102,7 @@ Defined theme colors and properties are located in [colors-and-properties.xml](/
 
 ## 4: Animating things
 
-In **Telegram X** you shall forget about the usual way of animating `View` or properties in Android and use one of the classes located in `me.vkryl.android.animator` package. Main idea is to use as few animators as possible to avoid desync in choreography, improve animations performance and reduce battery usage.
+In **HumanGram** you shall forget about the usual way of animating `View` or properties in Android and use one of the classes located in `me.vkryl.android.animator` package. Main idea is to use as few animators as possible to avoid desync in choreography, improve animations performance and reduce battery usage.
 
 ### 4.1: `FactorAnimator`
 Base class that animates `float` value, which can be used to animate pretty much anything.
@@ -262,7 +262,7 @@ Pretty much the same as `ListAnimator<T>`, but meant to be used for a single ite
 
 ## 5: Navigation, screens and their lifecycle
 
-Unlike most Android projects, **Telegram X** doesn't use regular `Activity` or `Fragment` navigation.
+Unlike most Android projects, **HumanGram** doesn't use regular `Activity` or `Fragment` navigation.
 
 Instead, it's based on its own abstract `BaseActivity` class, which uses `NavigationController`, which manages navigation between `ViewController<T>`'s subclasses.
 
@@ -331,7 +331,7 @@ To test saving and restoring navigation stack you might want to use **Don't keep
 
 ### 5.3: `BaseView`, or pseudo 3D-touch
 
-There's a special navigation type in **Telegram X**: pseudo 3D-touch. It could be found when holding chats in the chats list (when `Chat Previews` are enabled in Settings – Interface), holding photos and videos in shared media tab in profiles, and many other places.
+There's a special navigation type in **HumanGram**: pseudo 3D-touch. It could be found when holding chats in the chats list (when `Chat Previews` are enabled in Settings – Interface), holding photos and videos in shared media tab in profiles, and many other places.
 
 Whenever you want to implement 3D-touch, target view shall inherit from `BaseView` class. There are two modes in which `BaseView` could be used:
 
@@ -392,7 +392,7 @@ view.setPreviewActionListProvider(new BaseView.ActionListProvider() {
 
 ### 6.1: Utilities for custom views
 
-**Telegram X** heavily uses custom views with custom drawing methods to reduce layout structure complexity, easily implement animations of any kind, improve frame rate, etc.
+**HumanGram** heavily uses custom views with custom drawing methods to reduce layout structure complexity, easily implement animations of any kind, improve frame rate, etc.
 
 For that reason, there're many utilties built for custom drawings.
 
@@ -447,7 +447,7 @@ Unless working with heavily optimized custom `ViewGroup`, you shall avoid layout
 
 ## 8: Code style
 
-There are few rules that Telegram X tries to follow:
+There are few rules that HumanGram tries to follow:
 
 1. Never copy-paste public repositories, use git submodules
 2. Same with libraries: never copy-paste, always add as gradle dependency
@@ -501,14 +501,14 @@ However, as the of the moment of writing this text, there's only one project dev
 
 I've started separating most common utility classes and methods to `me.vkryl` package that do not refer to any other packages (except for `org.drinkless` in `me.vkryl.td` package), but still the most part of the app is designed as it is.
 
-As I see, in perfect world **Telegram X** would be separated in a way similar to **AndroidX**: as a tree of packages with a structure similar to the roots of `me.vkryl` package.
+As I see, in perfect world **HumanGram** would be separated in a way similar to **AndroidX**: as a tree of packages with a structure similar to the roots of `me.vkryl` package.
 
 Here're some of the modules / packages that could be done in future:
 
 1. `theme`: handles everything related to colors and themes;
 2. `language`: handles everything related to languages;
 3. `text`: similar to `org.thunderdog.challegram.util.text`, but without explicit references to `TdApi`, `Tdlib`, other `org.thunderdog.challegram.*` packages and other things irrelevant to `Text` that could be made abstract;
-4. `leveldb`: **Telegram X**'s java layer for working with **LevelDB** (see `org.thunderdog.challegram.tool.LevelDB`);
+4. `leveldb`: **HumanGram**'s java layer for working with **LevelDB** (see `org.thunderdog.challegram.tool.LevelDB`);
 5. `telegram`: similar to `org.thunderdog.challegram.telegram`, handling everything related to `TDLib`: instances, caching objects, etc;
 6. `navigation`: all navigation-related and `ViewController` logic, that could be very useful for any other non-Telegram-related projects.
 
@@ -521,11 +521,11 @@ In the beginning, many things that currently look like contexts previously were 
 
 ### 10.5: Give ExoPlayer audio notification management
 
-Currently **Telegram X** manages audio service and notification. However, it might be a good idea to get rid of what's possible on **Telegram X** side, and give full control to **ExoPlayer**. See [Playback Notifications with ExoPlayer](https://medium.com/google-exoplayer/playback-notifications-with-exoplayer-a2f1a18cf93b).
+Currently **HumanGram** manages audio service and notification. However, it might be a good idea to get rid of what's possible on **HumanGram** side, and give full control to **ExoPlayer**. See [Playback Notifications with ExoPlayer](https://medium.com/google-exoplayer/playback-notifications-with-exoplayer-a2f1a18cf93b).
 
 ### 10.6: Proper native object management
 
-There're some java objects in **Telegram X** that are designed in a pretty common way (example without thread safety):
+There're some java objects in **HumanGram** that are designed in a pretty common way (example without thread safety):
 
 ```
 final class Example {
@@ -560,13 +560,13 @@ However, according to [this Google I/O talk](https://www.youtube.com/watch?v=7_c
 
 ### 10.7: Talkback support
 
-**Telegram X** currently doesn't support accessibility features, because it heavily uses gestures and custom views that did not take them in mind from the beginning. However, at some point in future, it's obvious that they have to be implemented.
+**HumanGram** currently doesn't support accessibility features, because it heavily uses gestures and custom views that did not take them in mind from the beginning. However, at some point in future, it's obvious that they have to be implemented.
 
 ### 10.8: System integration
 
-Currently **Telegram X** almost does not use any system integration features. A lot of related features could be added, but it's important to note that any external feature must not expose user identifiers and phone numbers to the system and, especially, to other apps.
+Currently **HumanGram** almost does not use any system integration features. A lot of related features could be added, but it's important to note that any external feature must not expose user identifiers and phone numbers to the system and, especially, to other apps.
 
-When working with user identifiers, it's possible to encrypt them with some local encryption key accessible only to **Telegram X**, or store `local_user_id <-> user_id` pair in key-value storage that is private to the app too.
+When working with user identifiers, it's possible to encrypt them with some local encryption key accessible only to **HumanGram**, or store `local_user_id <-> user_id` pair in key-value storage that is private to the app too.
 
 ### 10.9: RTL support for `Text`
 

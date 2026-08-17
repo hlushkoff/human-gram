@@ -8,8 +8,8 @@
 
 ## Reporting a Vulnerability
 
-**Telegram X** relies on [TDLib](https://core.telegram.org/tdlib) for most security-critical operations (encryption, key management, etc).
+**HumanGram** relies on [TDLib](https://core.telegram.org/tdlib) for most security-critical operations (encryption, key management, etc).
 
-When reporting a vulnerability, clarify whether it affects TDLib or Telegram X, and go to Settings — hold app version — `Copy Report Details`, and include the copied text in your report, if it represents the last affected version.
+When reporting a vulnerability, clarify whether it affects TDLib or HumanGram, and go to Settings — hold app version — `Copy Report Details`, and include the copied text in your report, if it represents the last affected version.
 
 Refer to [Telegram Bug Bounty Program](https://core.telegram.org/bug-bounty) for more information.

@@ -97,6 +97,8 @@ function build_one {
   --enable-decoder=alac \
   --enable-decoder=aac \
   \
+  --enable-parser=av1 \
+  \
   --enable-libvpx \
   --enable-decoder=libvpx_vp9 \
   \
@@ -210,14 +212,14 @@ configure_and_build() {
       ARCH=arm
       CPU=armv7-a
       PLATFORM=armv7-a
-      ADDITIONAL_CONFIGURE_FLAGS=(--enable-neon --disable-x86asm)
+      ADDITIONAL_CONFIGURE_FLAGS=(--enable-neon --disable-x86asm --disable-vulkan)
       OPTIMIZE_CFLAGS="-marm -march=${CPU} -mtune=cortex-a8 -mfloat-abi=softfp"
       CC=$PREBUILT/bin/armv7a-linux-androideabi${ANDROID_API}-clang
       CXX=$PREBUILT/bin/armv7a-linux-androideabi${ANDROID_API}-clang++
       AS=$CC
       if [[ ${ANDROID_NDK_VERSION%%.*} -ge 23 ]]; then
         LD=$CC
-        LIBS_DIR="${PREBUILT}/lib64/clang/12.0.9/lib/linux"
+        LIBS_DIR="${PREBUILT}/lib/clang/18/lib/linux"
         validate_dir "$LIBS_DIR"
         EXTRA_LDFLAGS="-L${LIBS_DIR} -Wl,--fix-cortex-a8"
         EXTRA_LIBS="-lunwind -lclang_rt.builtins-arm-android"
@@ -236,11 +238,11 @@ configure_and_build() {
       ARCH=x86
       CPU=i686
       PLATFORM=i686
-      ADDITIONAL_CONFIGURE_FLAGS=(--disable-asm --disable-x86asm)
+      ADDITIONAL_CONFIGURE_FLAGS=(--disable-asm --disable-x86asm --disable-vulkan)
       OPTIMIZE_CFLAGS=""
       if [[ ${ANDROID_NDK_VERSION%%.*} -ge 23 ]]; then
         LD=$CC
-        LIBS_DIR="${PREBUILT}/lib64/clang/12.0.9/lib/linux"
+        LIBS_DIR="${PREBUILT}/lib/clang/18/lib/linux"
         validate_dir "$LIBS_DIR"
         EXTRA_LDFLAGS="-L${LIBS_DIR}"
         EXTRA_LIBS=-lclang_rt.builtins-i686-android
