@@ -268,5 +268,35 @@ if (${ANDROID_ABI} STREQUAL "arm64-v8a" OR ${ANDROID_ABI} STREQUAL "x86_64")
   )
 endif()
 
+# == Ondo-Zero / Spectral CORE engine ==
+
+# Authoritative C++ sources live in spectral-core (single source of truth),
+# same as ondo-zero-android does. Built for every ABI Human Gram ships —
+# the engine is portable C++17; hardware attestation is gated at runtime
+# (OndoZeroIdentity.isSupported) on API 24+ devices only.
+set(SPECTRAL_CORE_CPP "${CMAKE_HOME_DIRECTORY}/../../../spectral-core/src/main/cpp")
+add_library(hgspectral SHARED
+  spectral_jni.cpp
+  "${SPECTRAL_CORE_CPP}/spectral_engine.cpp"
+  "${SPECTRAL_CORE_CPP}/merkle_tree.cpp"
+)
+target_include_directories(hgspectral PRIVATE
+  "${SPECTRAL_CORE_CPP}"
+)
+target_compile_options(hgspectral PRIVATE
+  -Wall -Wno-deprecated-declarations
+  -fno-math-errno -fno-strict-aliasing
+)
+target_link_libraries(hgspectral
+  log
+)
+if (${ANDROID_ABI} STREQUAL "arm64-v8a" OR ${ANDROID_ABI} STREQUAL "x86_64")
+  # Enable 16 KB ELF alignment.
+  target_link_options(hgspectral PRIVATE
+    "-Wl,-z,max-page-size=16384"
+    "-Wl,-z,common-page-size=16384"
+  )
+endif()
+
 include(AndroidNdkModules)
 android_ndk_import_module_cpufeatures()

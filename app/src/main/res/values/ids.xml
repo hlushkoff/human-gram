@@ -178,6 +178,7 @@
   <item type="id" name="controller_call" />
   <item type="id" name="controller_people" />
   <item type="id" name="controller_settings" />
+  <item type="id" name="controller_ondoZero" />
   <item type="id" name="controller_archiveSettings" />
   <item type="id" name="controller_storageSettings" />
   <item type="id" name="controller_messages" />
@@ -310,6 +311,19 @@
   <item type="id" name="sender" />
   <item type="id" name="account" />
   <item type="id" name="btn_wallet" />
+  <item type="id" name="btn_wallet_create" />
+  <item type="id" name="btn_wallet_import" />
+  <item type="id" name="btn_wallet_send" />
+  <item type="id" name="btn_wallet_migrate" />
+  <item type="id" name="btn_ondoZero" />
+  <item type="id" name="btn_ondoZero_deviceName" />
+  <item type="id" name="btn_ondoZero_spectralId" />
+  <item type="id" name="btn_ondoZero_deviceStatus" />
+  <item type="id" name="btn_ondoZero_registerDevice" />
+  <item type="id" name="btn_ondoZero_walletAddress" />
+  <item type="id" name="btn_ondoZero_solBalance" />
+  <item type="id" name="btn_ondoZero_tokenBalance" />
+  <item type="id" name="btn_ondoZero_hashRate" />
   <item type="id" name="contact" />
   <item type="id" name="call" />
   <item type="id" name="bucket" />

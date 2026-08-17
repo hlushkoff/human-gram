@@ -260,7 +260,7 @@ android {
           "-finline-functions"
         )
         externalNativeBuild.cmake {
-          targets += arrayOf("tgxjni", "tgcallsjni")
+          targets += arrayOf("tgxjni", "tgcallsjni", "hgspectral")
           arguments(
             "-DANDROID_PLATFORM=android-${selectedMinSdk}",
             "-DTGX_FLAVOR=${variant.flavor}",
@@ -528,6 +528,8 @@ dependencies {
   implementation(project(":vkryl:leveldb"))
   implementation(project(":vkryl:android"))
   implementation(project(":vkryl:td"))
+  // Ondo-Zero / Spectral CORE (device identity, TEE keys, Solana RPC/tx)
+  implementation(project(":spectral-core"))
   // AndroidX: https://developer.android.com/jetpack/androidx/versions
   flavorImplementation(
     libs.androidx.activity.legacy,
@@ -565,6 +567,8 @@ dependencies {
     libs.androidx.exifinterface.latest
   )
   implementation(libs.androidx.biometric)
+  implementation("androidx.security:security-crypto:1.1.0-alpha06")
+  implementation("org.bouncycastle:bcprov-jdk18on:1.78")
   implementation(libs.androidx.palette)
   implementation(libs.androidx.collection)
   implementation(libs.androidx.interpolator)

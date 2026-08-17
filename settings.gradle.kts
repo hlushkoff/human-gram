@@ -22,7 +22,7 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "tgx"
+rootProject.name = "human-gram"
 include(
   ":tdlib",
   ":tgcalls",
@@ -34,6 +34,9 @@ include(
 
   ":extension:bridge",
   ":extension:${extra["extension"]}",
-
   ":app"
 )
+
+// Ondo-Zero / Spectral CORE shared library (single source of truth: mobile/spectral-core)
+include(":spectral-core")
+project(":spectral-core").projectDir = File(rootDir.parentFile, "spectral-core")

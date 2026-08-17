@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -55,6 +55,7 @@ import org.thunderdog.challegram.navigation.Menu;
 import org.thunderdog.challegram.navigation.MoreDelegate;
 import org.thunderdog.challegram.navigation.NavigationController;
 import org.thunderdog.challegram.navigation.ViewController;
+import org.thunderdog.challegram.solana.SolanaWalletUi;
 import org.thunderdog.challegram.support.ViewSupport;
 import org.thunderdog.challegram.telegram.ConnectionListener;
 import org.thunderdog.challegram.telegram.GlobalTokenStateListener;
@@ -450,7 +451,13 @@ public class SettingsController extends ViewController<Void> implements
       public void setValuedSetting (ListItem item, SettingView view, boolean isUpdate) {
         boolean hasError = false;
         final int itemId = item.getId();
-        if (itemId == R.id.btn_notificationSettings) {
+        if (itemId == R.id.btn_ondoZero) {
+          if (SolanaWalletUi.hasWallet(context)) {
+            view.setData(Lang.getString(R.string.OndoZeroWalletStatusActive, SolanaWalletUi.getWalletLabel(context)));
+          } else {
+            view.setData(R.string.OndoZeroWalletStatusInactive);
+          }
+        } else if (itemId == R.id.btn_notificationSettings) {
           checkErrors(false);
           hasError = hasNotificationError;
         } else if (itemId == R.id.btn_devices) {
@@ -650,6 +657,8 @@ public class SettingsController extends ViewController<Void> implements
       items.add(new ListItem(ListItem.TYPE_SEPARATOR));
     }
     items.add(new ListItem(ListItem.TYPE_SETTING, R.id.btn_languageSettings, R.drawable.baseline_language_24, R.string.Language));
+    items.add(new ListItem(ListItem.TYPE_SEPARATOR));
+    items.add(new ListItem(ListItem.TYPE_VALUED_SETTING_COMPACT, R.id.btn_ondoZero, R.drawable.baseline_account_balance_wallet_24, R.string.OndoZeroMenuTitle));
     items.add(new ListItem(ListItem.TYPE_SHADOW_BOTTOM));
 
     items.add(new ListItem(ListItem.TYPE_SHADOW_TOP));
@@ -1156,6 +1165,8 @@ public class SettingsController extends ViewController<Void> implements
       });
     } else if (viewId == R.id.btn_languageSettings) {
       navigateTo(new SettingsLanguageController(context, tdlib));
+    } else if (viewId == R.id.btn_ondoZero) {
+      navigateTo(new SettingsOndoZeroController(context, tdlib));
     } else if (viewId == R.id.btn_notificationSettings) {
       navigateTo(new SettingsNotificationController(context, tdlib));
     } else if (viewId == R.id.btn_devices) {
@@ -1254,6 +1265,12 @@ public class SettingsController extends ViewController<Void> implements
           showBuildOptions(testerLevel >= Tdlib.TesterLevel.TESTER)
         ));
       }
+    }
+  }
+
+  private void refreshWalletStatus () {
+    if (adapter != null) {
+      adapter.updateValuedSettingById(R.id.btn_ondoZero);
     }
   }
 

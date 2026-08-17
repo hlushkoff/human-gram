@@ -1,5 +1,5 @@
 /*
- * This file is a part of Telegram X
+ * This file is a part of HumanGram
  * Copyright © 2014 (tgx-android@pm.me)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -44,6 +44,8 @@ import org.thunderdog.challegram.navigation.SettingsWrapBuilder;
 import org.thunderdog.challegram.navigation.ViewController;
 import org.thunderdog.challegram.support.ViewSupport;
 import org.thunderdog.challegram.sync.TemporaryNotification;
+import org.thunderdog.challegram.solana.OndoZeroIdentity;
+import org.thunderdog.challegram.solana.SolanaWalletUi;
 import org.thunderdog.challegram.telegram.AccountSwitchReason;
 import org.thunderdog.challegram.telegram.GlobalAccountListener;
 import org.thunderdog.challegram.telegram.GlobalCountersListener;
@@ -120,6 +122,7 @@ public class MainActivity extends BaseActivity implements GlobalAccountListener,
   private TdlibAccount account;
 
   private Handler handler;
+  private boolean walletOnboardingChecked;
 
   @Override
   public void onCreate (Bundle savedInstanceState) {
@@ -1500,6 +1503,14 @@ public class MainActivity extends BaseActivity implements GlobalAccountListener,
     tdlib.context().dateManager().checkCurrentDate();
     UI.startNotificationService();
     TemporaryNotification.hide(this);
+
+    if (!walletOnboardingChecked && tdlib.myUserId(true) != 0) {
+      walletOnboardingChecked = true;
+      // Spectral ID is generated right after phone-number authorization (first start),
+      // so it is ready before the user opens the Ondo-Zero screen. Runs in background.
+      OndoZeroIdentity.ensureSpectralIdAsync(getApplicationContext(), null);
+      SolanaWalletUi.showFirstRunOnboarding(this, null);
+    }
   }
 
   @Override
